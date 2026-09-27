@@ -1,4 +1,4 @@
-const CACHE='openck-portfolio-v5';
+const CACHE='openck-portfolio-v6';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png','./qr-install.png','./qr-advisor.png','./qr-content-studio.png','./qr-lead-automation.png','./qr-cktrades.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('openck-portfolio-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
